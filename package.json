@@ -1,8 +1,8 @@
 {
     "name": "capsule",
-    "description": "A Bare bones base theme with everything in it to build other themes on top of.",
+    "description": "A bare bones base theme with everything in it to build other themes on top of.",
     "demo": "https://demo.ghost.io",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "engines": {
         "ghost": ">=4.0.0",
         "ghost-api": "v4"
