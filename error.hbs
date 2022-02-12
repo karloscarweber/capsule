@@ -1,0 +1,74 @@
+{{!--
+
+There are two error files in this theme, one for 404s and one for all other errors.
+This file is the latter, and handle all 400/500 errors that might occur.
+
+Because 500 errors in particular usuall happen when a server is struggling, this
+template is as simple as possible. No template dependencies, no JS, no API calls.
+This is to prevent rendering the error-page itself compounding the issue causing
+the error in the first place.
+
+Keep this template as lightweight as you can!
+
+--}}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{{meta_title}}</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
+</head>
+<body>
+    <div>
+
+        <header>
+            <div>
+                <div>
+                    <nav>
+                        {{#if @site.logo}}
+                        <a href="{{@site.url}}"><img src="{{img_url @site.logo size="xs"}}"
+                                alt="{{@site.title}}" /></a>
+                        {{else}}
+                        <a href="{{@site.url}}">{{@site.title}}</a>
+                        {{/if}}
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div>
+
+                <section>
+                    <h1>{{statusCode}}</h1>
+                    <p>{{message}}</p>
+                    <a href="{{@site.url}}">Go to the front page →</a>
+                </section>
+
+                {{#if errorDetails}}
+                <section >
+                    <h3>Theme errors</h3>
+                    <ul >
+                        {{#foreach errorDetails}}
+                            <li>
+                                <em >{{{rule}}}</em>
+
+                                {{#foreach failures}}
+                                    <p><span>Ref: {{ref}}</span></p>
+                                    <p><span>Message: {{message}}</span></p>
+                                {{/foreach}}
+                            </li>
+                        {{/foreach}}
+                    </ul>
+                </section>
+                {{/if}}
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>
