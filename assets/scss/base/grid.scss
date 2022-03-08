@@ -1,0 +1,135 @@
+/* Grid styles */
+:root {
+  --color-background: #E7E9F0;
+}
+/// .page
+///
+/// the .page class denotes a page element that contains the whole page in a site.
+/// These pages are meant to contain the entire screen and generally don't
+/// contain the menu/header of a site. Pages statically on top of one another
+/// in the z-axis. presentation/dissapearing can be customized using transition
+/// variables to achieve smooth AJAX loading of successive pages in a site.
+.page { // pages are vertically organized;
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+    width: auto;
+    height:auto;
+    min-width: 100%;
+    min-height: 100%;
+
+    // debug:
+    background-color: var(--color-background);
+
+    // padding to give the design some space to breath.
+    padding: 0px 1.5rem;
+}
+
+/// .section
+///
+/// Sections represent horizontal divisions of a webpages. This is a container
+/// element that can also be embedded in other elements with almost identical
+/// behaviour.
+
+.section { //
+    display:block;
+    // flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+    width:auto;
+    height:auto;
+    min-width: 100%;
+
+    // debug:
+    background-color: orange;
+
+    // padding to give the design some space to breath.
+    margin:1.5rem 0px;
+}
+
+
+/// .main
+///
+/// Main is the main section. Inside of the page are elements, usually content
+/// and containers. Main holds the primary content, the header, the post body,
+/// and any footer associated with a post. It may be better to replace main when
+/// performing AJAX replacements.
+main {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: auto;
+}
+
+
+:root {
+    --columns: 16;
+    --gutter: 20;
+    --gutter-half: calc( var(--gutter) / 2);
+    // --column: 60; //  this is a calculated number
+    --total-width: 1280;
+}
+
+@mixin generate-column($name, $number) {
+  --#{$name}-columns: calc( ( ((var(--total-width) / var(--columns)) * #{$number} ) - var(--gutter) ) / var(--total-width) * 100% );
+  --#{$name}-columns-no-gutter: calc( ( ((var(--total-width) / var(--columns)) * #{$number} ) - 0 ) / var(--total-width) * 100% );
+}
+
+:root {
+    // (((1280/16) - 20) / 1280)
+    @include generate-column(one,       1);
+    @include generate-column(two,       2);
+    @include generate-column(three,     3);
+    @include generate-column(four,      4);
+    @include generate-column(five,      5);
+    @include generate-column(six,       6);
+    @include generate-column(seven,     7);
+    @include generate-column(eight,     8);
+    @include generate-column(nine,      9);
+    @include generate-column(ten,      10);
+    @include generate-column(eleven,   11);
+    @include generate-column(twelve,   12);
+    @include generate-column(thirteen, 13);
+    @include generate-column(fourteen, 14);
+    @include generate-column(fifteen,  15);
+    @include generate-column(sixteen,  16);
+
+    --half-gutter: calc( (var(--gutter-half) / var(--total-width) ) * 100% );
+}
+
+// generate column classes for the values above
+$columns: (
+ one:       1,
+ two:       2,
+ three:     3,
+ four:      4,
+ five:      5,
+ six:       6,
+ seven:     7,
+ eight:     8,
+ nine:      9,
+ ten:      10,
+ eleven:   11,
+ twelve:   12,
+ thirteen: 13,
+ fourteen: 14,
+ fifteen:  15,
+ sixteen:  16
+);
+
+@mixin generate-column-classes {
+  @each $name, $value in $columns {
+    // do stuff
+    .#{$name}-columns {
+      width: 100%;
+      min-width: var(--#{$name}-columns);
+    }
+    .#{$name}-columns-no-gutter {
+      width: 100%;
+      min-width: var(--#{$name}-columns-no-gutter);
+    }
+  }
+}
+
+@include generate-column-classes;
