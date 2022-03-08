@@ -30,45 +30,13 @@
 <body >
     <div class="page">
         <div class="section">
-    <header class="gh-head{{#match @custom.publication_cover_style "!=" "None"}} has-cover{{/match}}">
-        <nav>
-            <div class="gh-">
-                <a href="{{@site.url}}">
-                    {{#if @site.logo}}
-                        <img src="{{@site.logo}}" alt="{{@site.title}}" />
-                    {{else}}
-                        {{@site.title}}
-                    {{/if}}
-                </a>
-            </div>
-            <div class="gh-head-menu">
-                {{navigation}}
-            </div>
-            <div>
-                <div>
-                    <!-- TODO: Implement social share icons and stuff. -->
-                    {{!--
-                    {{#if @site.facebook}}
-                        <a href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
-                    {{/if}}
-                    {{#if @site.twitter}}
-                        <a href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
-                    {{/if}
-                    --}}
-                </div>
-
-                {{#unless @member}}
-                    <a href="#/portal/signup" data-portal="signup">Subscribe</a>
-                {{else}}
-                    <a href="#/portal/account" data-portal="account">Account</a>
-                {{/unless}}
-            </div>
-        </nav>
-    </header>
+            <header class="gh-head{{#match @custom.publication_cover_style "!=" "None"}} has-cover{{/match}}">
+                {{> "navbar"}}
+            </header>
         </div>
         {{!-- /.section --}}
 
-    <div>
+    <div class="section">
         {{!-- All other templates get inserted here, index.hbs, post.hbs, etc --}}
         {{{body}}}
     </div>

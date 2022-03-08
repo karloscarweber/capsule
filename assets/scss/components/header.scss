@@ -17,7 +17,30 @@ nav {
     justify-content: space-between;
     width: 100%;
 
+    line-height: 44.42px;
+    font-weight: 600;
+    color: var(--text-color);
+    a, a:visited, a:hover {
+        color: var(--text-color);
+        text-decoration: none;
+    }
 }
+
+.gh-header-site-name {
+    a, a:visited, a:hover {
+        color: var(--text-color);
+        text-decoration: none;
+        cursor: pointer;
+
+        font-weight: 600;
+        font-size: 44.42px;
+        @media all and (max-width: $breakpoint-mobile) {
+            font-size: 28px;
+        }
+
+    }
+}
+
 
 
 .gh-head-menu {
@@ -28,6 +51,15 @@ nav {
         margin: 0;
         li {
             display: inline;
+            a {
+                font-size: 1.25rem;
+                letter-spacing: -0.025rem;
+                margin-left: 0.25rem;
+                margin-right: 0.25rem;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
