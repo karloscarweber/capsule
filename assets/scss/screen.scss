@@ -1,6 +1,27 @@
 // Import Littel
 @import './node_modules/littel/src/scss/littel.scss';
+// @import './node_modules/littel/dist/css/littel.css';
+
+// import local styles
+@import 'base/grid';
+@import 'base/typeface';
+@import 'base/typography';
+
+// components
+@import 'components/header';
+
+:root {
+    // --f-0-min:  20;    //  20px
+    // --f-0-max:  25;    //  25px
+
+    --fc-m-min: 10;
+    --fc-m-max: 20;
+}
 
 body {
-    font-size: var(--f-0);
+  min-height: 1vw; /* forces a repaint that actually makes this stuff work. */
+  font-size: var(--f-0);
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+  @include typeface-inter;
 }

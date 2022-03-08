@@ -28,10 +28,11 @@
 
 </head>
 <body >
+    <div class="page">
+        <div class="section">
     <header class="gh-head{{#match @custom.publication_cover_style "!=" "None"}} has-cover{{/match}}">
         <nav>
-
-            <div>
+            <div class="gh-">
                 <a href="{{@site.url}}">
                     {{#if @site.logo}}
                         <img src="{{@site.logo}}" alt="{{@site.title}}" />
@@ -45,12 +46,15 @@
             </div>
             <div>
                 <div>
+                    <!-- TODO: Implement social share icons and stuff. -->
+                    {{!--
                     {{#if @site.facebook}}
                         <a href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
                     {{/if}}
                     {{#if @site.twitter}}
                         <a href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
-                    {{/if}}
+                    {{/if}
+                    --}}
                 </div>
 
                 {{#unless @member}}
@@ -61,6 +65,8 @@
             </div>
         </nav>
     </header>
+        </div>
+        {{!-- /.section --}}
 
     <div>
         {{!-- All other templates get inserted here, index.hbs, post.hbs, etc --}}
@@ -76,8 +82,8 @@
             <div><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
     </footer>
 
-{{!-- /.viewport --}}
-
+</div>
+{{!-- /.page --}}
 
 {{!-- Scripts - handle member signups, responsive videos, infinite scroll, floating headers, and galleries --}}
 <script

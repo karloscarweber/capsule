@@ -1,0 +1,14 @@
+:root {
+    --color-link: #395FFF;
+}
+a, a:visited  {
+    color: var(--color-link);
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+
+* {
+    font-family: "inter";
+}
