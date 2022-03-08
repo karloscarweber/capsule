@@ -386,6 +386,7 @@ select {
 /* Grid styles */
 :root {
   --color-background: #E7E9F0;
+  --max-width: 60rem;
 }
 
 .page {
@@ -398,7 +399,6 @@ select {
   min-width: 100%;
   min-height: 100%;
   background-color: var(--color-background);
-  padding: 0px 1.5rem;
 }
 
 .section {
@@ -408,22 +408,49 @@ select {
   width: auto;
   height: auto;
   min-width: 100%;
-  background-color: orange;
-  margin: 1.5rem 0px;
 }
 
+/**
+  Containers
+*/
 main {
   display: flex;
   position: relative;
   flex-direction: column;
   width: auto;
+  max-width: 60rem;
+  box-sizing: border-box;
+}
+
+header {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+content {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width);
+  box-sizing: border-box;
+  padding: 0rem 1.25rem;
+}
+
+.container {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width);
+  box-sizing: border-box;
+  padding: 0rem 1.25rem;
 }
 
 :root {
   --columns: 16;
   --gutter: 20;
   --gutter-half: calc( var(--gutter) / 2);
-  --total-width: 1280;
+  --total-width: 960;
 }
 
 :root {
@@ -781,6 +808,7 @@ main {
 
 :root {
   --color-link: #395FFF;
+  --text-color: #555555;
 }
 
 a, a:visited {
@@ -793,6 +821,11 @@ a:hover, a:visited:hover {
 
 * {
   font-family: "inter";
+}
+
+:root {
+  --breakpoint-mobile: 480px;
+  --breakpoint-mega: 1100px;
 }
 
 /* Header */
@@ -810,6 +843,28 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  line-height: 44.42px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+nav a, nav a:visited, nav a:hover {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.gh-header-site-name a, .gh-header-site-name a:visited, .gh-header-site-name a:hover {
+  color: var(--text-color);
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 44.42px;
+}
+
+@media all and (max-width: 600px) {
+  .gh-header-site-name a, .gh-header-site-name a:visited, .gh-header-site-name a:hover {
+    font-size: 28px;
+  }
 }
 
 .gh-head-menu ul.nav {
@@ -820,6 +875,17 @@ nav {
 
 .gh-head-menu ul.nav li {
   display: inline;
+}
+
+.gh-head-menu ul.nav li a {
+  font-size: 1.25rem;
+  letter-spacing: -0.025rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.gh-head-menu ul.nav li a:hover {
+  text-decoration: underline;
 }
 
 :root {

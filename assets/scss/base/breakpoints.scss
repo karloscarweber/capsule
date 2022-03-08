@@ -1,0 +1,7 @@
+:root {
+    --breakpoint-mobile: 480px; // very small sites
+    --breakpoint-mega: 1100px; // very large sites
+}
+
+$breakpoint-contstrained: 600px;
+$breakpoint-mobile: $breakpoint-contstrained;

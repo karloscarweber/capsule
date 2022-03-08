@@ -1,6 +1,7 @@
 /* Grid styles */
 :root {
   --color-background: #E7E9F0;
+  --max-width: 60rem;
 }
 /// .page
 ///
@@ -18,12 +19,10 @@
     height:auto;
     min-width: 100%;
     min-height: 100%;
-
-    // debug:
     background-color: var(--color-background);
 
-    // padding to give the design some space to breath.
-    padding: 0px 1.5rem;
+    // debug:
+    // background-color: green);
 }
 
 /// .section
@@ -42,14 +41,24 @@
     min-width: 100%;
 
     // debug:
-    background-color: orange;
+    // background-color: orange;
 
     // padding to give the design some space to breath.
-    margin:1.5rem 0px;
+    // padding: 0px 1.5rem;
 }
 
+/**
+  Containers
+*/
 
-/// .main
+/// Containers contain content, this may seem obvious, but they are meant to
+/// keep content within the rails of the design's grid. Pages and sections don't
+/// horizontally keep content within, this gives objects placed within them
+/// naturally wide canvas to adopt. Containers then come in to keep things in
+/// line.
+
+
+/// main
 ///
 /// Main is the main section. Inside of the page are elements, usually content
 /// and containers. Main holds the primary content, the header, the post body,
@@ -60,6 +69,49 @@ main {
     position: relative;
     flex-direction: column;
     width: auto;
+
+    max-width: 60rem;
+    box-sizing: border-box;
+}
+
+
+/// header
+///
+/// Main is the main section. Inside of the page are elements, usually content
+/// and containers. Main holds the primary content, the header, the post body,
+/// and any footer associated with a post. It may be better to replace main when
+/// performing AJAX replacements.
+header {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+/// content
+///
+/// content is placed within main and is placed after a header. It constitutes
+/// the content of a page. A blog post, a page. Etc... sometimes there is a
+/// sidebar that accompanies a page, this is placed as a sibling to content
+/// within main.
+content {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width);
+  box-sizing: border-box;
+  padding: 0rem 1.25rem;
+}
+
+/// .container
+///
+/// Generic Container for content. Uses standard paddings and stuff for content
+.container {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width);
+  box-sizing: border-box;
+  padding: 0rem 1.25rem;
 }
 
 
@@ -68,7 +120,8 @@ main {
     --gutter: 20;
     --gutter-half: calc( var(--gutter) / 2);
     // --column: 60; //  this is a calculated number
-    --total-width: 1280;
+    // --total-width: 1280;
+    --total-width: 960;
 }
 
 @mixin generate-column($name, $number) {
