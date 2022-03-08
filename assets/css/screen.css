@@ -418,7 +418,6 @@ main {
   position: relative;
   flex-direction: column;
   width: auto;
-  max-width: 60rem;
   box-sizing: border-box;
 }
 
@@ -444,6 +443,20 @@ content {
   max-width: var(--max-width);
   box-sizing: border-box;
   padding: 0rem 1.25rem;
+}
+
+.container .centered {
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--space-s);
+}
+
+.container .left-aligned {
+  margin-left: var(--space-s);
+}
+
+.container .right-aligned {
+  margin-right: var(--space-s);
 }
 
 :root {
@@ -809,6 +822,7 @@ content {
 :root {
   --color-link: #395FFF;
   --text-color: #555555;
+  --measure-title-max-width: 77.5rem;
 }
 
 a, a:visited {
@@ -886,6 +900,57 @@ nav a, nav a:visited, nav a:hover {
 
 .gh-head-menu ul.nav li a:hover {
   text-decoration: underline;
+}
+
+/*
+    post heading
+*/
+heading {
+  display: block;
+  position: relative;
+}
+
+heading h1 {
+  display: inline-block;
+  font-size: 105.2px;
+  line-height: 105.2px;
+  width: 100%;
+  max-width: var(--measure-title-max-width);
+  text-align: left;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+heading p.excerpt {
+  font-size: 1.25rem;
+  line-height: 1.5em;
+  font-weight: 600;
+}
+
+/**
+    Content
+*/
+:root {
+  --element-spacing: 1em;
+  --text-size: 1.171875rem;
+}
+
+content > h1, content > h2, content > h3, content > h4, content > h5 {
+  margin-top: var(--element-spacing);
+}
+
+content > p {
+  font-family: var(--font-family);
+  font-size: var(--text-size);
+  line-height: 1.333em;
+  margin-top: var(--element-spacing);
+}
+
+content > figure img {
+  width: 100%;
+  height: auto;
+  margin-top: var(--space-m);
+  margin-bottom: var(--space-m);
 }
 
 :root {

@@ -1,0 +1,42 @@
+/**
+    Content
+*/
+
+/// content
+///
+/// The content element contains styled content straight from the koenig editor.
+/// content is responsive, accepts HTML, and styles elements that are DIRECT
+/// descendants of <content> This keeps the general styles from being polutted
+/// with generated markup styles.
+
+
+:root {
+    --element-spacing: 1em;
+    --text-size: 1.171875rem;
+}
+
+/// elements are given a padding at their top.
+/// This gives sub elements control of how close they can be to parent content
+/// and headings.
+
+content {
+    & > h1, & > h2, & > h3, & > h4, & > h5 {
+        margin-top: var(--element-spacing);
+    }
+
+    & > p {
+        font-family: var(--font-family);
+        font-size: var(--text-size);
+        line-height: 1.333em;
+        margin-top: var(--element-spacing);
+    }
+
+    & > figure {
+        img {
+            width: 100%;
+            height: auto;
+            margin-top: var(--space-m);
+            margin-bottom: var(--space-m);
+        }
+    }
+}
