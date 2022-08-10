@@ -1,0 +1,41 @@
+/* list */
+
+/*
+  The list
+
+  List components are meant to organize objects into a list, but not text lists, that are just <ul> or <ol>.
+
+  The main use of the list is for our indexes, Post indexes.
+*/
+
+.list {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 45.75rem;
+}
+
+/* index stuff */
+.index-header {
+  font-size: var(--font-size-excerpt);
+  line-height: 1.2em;
+  font-weight: 500;
+  margin: 0;
+  color:#111111;
+  width: 100%;
+}
+
+.list hr {
+  background: #111111;
+  border-radius: 2px;
+  height: 4px;
+  width: 100%;
+  border:none;
+
+  &.no-top-margin {
+    margin-top: 0;
+  }
+}

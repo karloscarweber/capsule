@@ -4,14 +4,19 @@
 
 // import local styles
 @import 'base/grid';
+  // .page, .section, header, main, content, footer, .container
 @import 'base/typeface';
 @import 'base/typography';
 @import 'base/breakpoints';
+
+@import 'colors';
 
 // components
 @import 'components/header';
 @import 'components/post';
 @import 'components/content';
+@import 'components/post-card';
+@import 'components/list';
 
 :root {
     // --f-0-min:  20;    //  20px
@@ -23,8 +28,23 @@
 
 body {
   min-height: 1vw; /* forces a repaint that actually makes this stuff work. */
+  font-size:16px;
   font-size: var(--f-0);
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
   @include typeface-inter;
+  background-color: var(--color-background);
 }
+
+
+/* T-shirt sizes */
+/* included from littel sizes. */
+// --space-3xs
+// --space-2xs
+// --space-xs
+// --space-s
+// --space-m
+// --space-l
+// --space-xl
+// --space-2xl
+// --space-3xl

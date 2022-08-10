@@ -1,10 +1,13 @@
 /* Header */
+:root {
+    --header-generic-height:4.3125rem; // Used to set the height of the header and line-heights for the list elements
+    --header-line-heights: var(--header-generic-height);
+}
 header {
     display: flex;
     position:relative;
     box-sizing: border-box;
     width: 100%;
-
     padding: var(--space-m);
 }
 
@@ -12,12 +15,10 @@ header {
 nav {
     display: flex;
     position:relative;
-
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-
-    line-height: 44.42px;
+    line-height: var(--header-line-heights);
     font-weight: 600;
     color: var(--text-color);
     a, a:visited, a:hover {
@@ -28,29 +29,31 @@ nav {
 
 .gh-header-site-name {
     a, a:visited, a:hover {
-        color: var(--text-color);
+        color: var(--color-text);
         text-decoration: none;
         cursor: pointer;
+        line-height: var(--header-line-heights);
 
         font-weight: 600;
         font-size: 44.42px;
         @media all and (max-width: $breakpoint-mobile) {
             font-size: 28px;
         }
-
     }
 }
 
 
-
 .gh-head-menu {
+    color: var(--color-text);
 
     ul.nav {
         list-style: none;
         padding: 0;
         margin: 0;
+        line-height: var(--header-line-heights);
         li {
             display: inline;
+            line-height: var(--header-line-heights);
             a {
                 font-size: 1.25rem;
                 letter-spacing: -0.025rem;
@@ -63,3 +66,46 @@ nav {
         }
     }
 }
+
+// Ghost portal code:
+/*
+    {{#unless @member}}
+        <a href="#/portal/signup" data-portal="signup">Subscribe</a>
+    {{else}}
+        <a href="#/portal/account" data-portal="account">Account</a>
+    {{/unless}}
+
+    transforms into:
+
+    <a href="#/portal/signup" data-portal="signup" class="gh-portal-close">Subscribe</a>
+*/
+.gh-portal-close {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: var(--header-line-heights);
+}
+
+// Custom Publication Cover Style:
+// the container object for the the site header found on the homepage.
+.site-header-content {
+    img {
+        border-radius: 1.5rem;
+    }
+    .site-header-text {
+        margin-top:var(--space-l);
+        margin-bottom:var(--space-l);
+        text-align: center;
+        color: var(--color-text);
+
+        h1 {
+            font-size: var(--font-size-subheading);
+            font-weight: 700;
+        }
+        p {
+            font-size: var(--text-header-size);
+            font-weight: 600;
+        }
+    }
+}
+

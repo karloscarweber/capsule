@@ -10,6 +10,22 @@ heading {
     display: block;
     position: relative;
 
+    h1, p {
+        margin: 0 1.25rem;
+    }
+
+    & > figure {
+        display:flex;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
     h1 {
         display: inline-block;
         font-size: 105.2px;
@@ -26,6 +42,7 @@ heading {
         font-size: 1.25rem;
         line-height: 1.5em;
         font-weight: 600;
+        max-width: var(--measure-wide);
     }
 
 }

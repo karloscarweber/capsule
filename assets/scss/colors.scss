@@ -1,0 +1,14 @@
+/* colors.scss */
+
+
+/* Establish default color variables. */
+:root {
+  --color-black: #111111;
+  --color-burple: #5E5CFF;
+
+  --color-text: var(--color-black);
+  --color-link: var(--color-burple);
+  --color-bg: #E7E9F0;
+
+  --color-accent: var(--color-burple);
+}

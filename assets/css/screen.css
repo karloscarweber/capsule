@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* littel include thing */
 /* Include reset, I think. */
 /* Reset from: https://github.com/hankchizljaw/modern-css-reset */
@@ -387,21 +388,108 @@ select {
 :root {
   --color-background: #E7E9F0;
   --max-width: 60rem;
+  --max-content-width: 45rem;
+  --container-margins:1.25rem;
 }
 
+/*
+/// Composition of Abstract container object:
+╭────────────────────────────────╮
+│Browser                         │
+│  ╭──────────────────────────╮  │
+│  │Page                      │  │
+│  │╭────────────────────────╮│  │
+│  ││Section                 ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  │╰────────────────────────╯│  │
+│  │╭────────────────────────╮│  │
+│  ││Section                 ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  │╰────────────────────────╯│  │
+│  ╰──────────────────────────╯  │
+╰────────────────────────────────╯
+
+/// Composition of Structured container object:
+╭────────────────────────────────╮
+│Section                         │
+│  ╭──────────────────────────╮  │
+│  │Header                    │  │
+│  ╰──────────────────────────╯  │
+│  ╭──────────────────────────╮  │
+│  │main                      │  │
+│  │                          │  │
+│  │                          │  │
+│  │                          │  │
+│  │                          │  │
+│  │                          │  │
+│  │                          │  │
+│  ╰──────────────────────────╯  │
+│  ╭──────────────────────────╮  │
+│  │Footer                    │  │
+│  ╰──────────────────────────╯  │
+╰────────────────────────────────╯
+
+/// Composition of Post
+╭────────────────────────────────╮
+│Section                         │
+│  ╭──────────────────────────╮  │
+│  │Header                    │  │
+│  ╰──────────────────────────╯  │
+│  ╭──────────────────────────╮  │
+│  │main                      │  │
+│  │╭────────────────────────╮│  │
+│  ││content                 ││  │
+│  ││╭──────────────────────╮││  │
+│  │││component             │││  │
+│  │││                      │││  │
+│  │││                      │││  │
+│  │││                      │││  │
+│  ││╰──────────────────────╯││  │
+│  │╰────────────────────────╯│  │
+│  │╭────────────────────────╮│  │
+│  ││component               ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  │╰────────────────────────╯│  │
+│  ╰──────────────────────────╯  │
+│  ╭──────────────────────────╮  │
+│  │Footer                    │  │
+│  ╰──────────────────────────╯  │
+╰────────────────────────────────╯
+*/
 .page {
   display: flex;
   flex-direction: column;
-  position: relative;
   box-sizing: border-box;
   width: auto;
   height: auto;
-  min-width: 100%;
-  min-height: 100%;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  overflow: scroll;
+  width: auto;
   background-color: var(--color-background);
+  border-radius: 1.5rem;
 }
 
-.section {
+.page.no-scroll {
+  position: relative;
+  top: unset;
+  left: unset;
+  right: unset;
+  bottom: unset;
+  height: auto;
+  overflow: unset;
+}
+
+.section, section {
   display: block;
   position: relative;
   box-sizing: border-box;
@@ -410,18 +498,57 @@ select {
   min-width: 100%;
 }
 
+.section.sticky, section.sticky {
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+}
+
+.section.stack, section.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section.stack-horizontal, section.stack-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.section.stack.reverse, section.stack.reverse {
+  flex-direction: column-reverse;
+}
+
+.section.stack-horizontal.reverse, section.stack-horizontal.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Direct Children are limited to a max width of 1280px or 80rem. */
+.section.stack > *, .section.stack.reverse > *,
+section.stack > *, section.stack.reverse > * {
+  max-width: 80rem;
+}
+
 /**
   Containers
 */
 main {
-  display: flex;
+  display: block;
   position: relative;
-  flex-direction: column;
   width: auto;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
 header {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+footer {
   display: block;
   position: relative;
   width: 100%;
@@ -504,166 +631,166 @@ content {
 
 .one-columns {
   width: 100%;
-  min-width: var(--one-columns);
+  max-width: var(--one-columns);
 }
 
 .one-columns-no-gutter {
   width: 100%;
-  min-width: var(--one-columns-no-gutter);
+  max-width: var(--one-columns-no-gutter);
 }
 
 .two-columns {
   width: 100%;
-  min-width: var(--two-columns);
+  max-width: var(--two-columns);
 }
 
 .two-columns-no-gutter {
   width: 100%;
-  min-width: var(--two-columns-no-gutter);
+  max-width: var(--two-columns-no-gutter);
 }
 
 .three-columns {
   width: 100%;
-  min-width: var(--three-columns);
+  max-width: var(--three-columns);
 }
 
 .three-columns-no-gutter {
   width: 100%;
-  min-width: var(--three-columns-no-gutter);
+  max-width: var(--three-columns-no-gutter);
 }
 
 .four-columns {
   width: 100%;
-  min-width: var(--four-columns);
+  max-width: var(--four-columns);
 }
 
 .four-columns-no-gutter {
   width: 100%;
-  min-width: var(--four-columns-no-gutter);
+  max-width: var(--four-columns-no-gutter);
 }
 
 .five-columns {
   width: 100%;
-  min-width: var(--five-columns);
+  max-width: var(--five-columns);
 }
 
 .five-columns-no-gutter {
   width: 100%;
-  min-width: var(--five-columns-no-gutter);
+  max-width: var(--five-columns-no-gutter);
 }
 
 .six-columns {
   width: 100%;
-  min-width: var(--six-columns);
+  max-width: var(--six-columns);
 }
 
 .six-columns-no-gutter {
   width: 100%;
-  min-width: var(--six-columns-no-gutter);
+  max-width: var(--six-columns-no-gutter);
 }
 
 .seven-columns {
   width: 100%;
-  min-width: var(--seven-columns);
+  max-width: var(--seven-columns);
 }
 
 .seven-columns-no-gutter {
   width: 100%;
-  min-width: var(--seven-columns-no-gutter);
+  max-width: var(--seven-columns-no-gutter);
 }
 
 .eight-columns {
   width: 100%;
-  min-width: var(--eight-columns);
+  max-width: var(--eight-columns);
 }
 
 .eight-columns-no-gutter {
   width: 100%;
-  min-width: var(--eight-columns-no-gutter);
+  max-width: var(--eight-columns-no-gutter);
 }
 
 .nine-columns {
   width: 100%;
-  min-width: var(--nine-columns);
+  max-width: var(--nine-columns);
 }
 
 .nine-columns-no-gutter {
   width: 100%;
-  min-width: var(--nine-columns-no-gutter);
+  max-width: var(--nine-columns-no-gutter);
 }
 
 .ten-columns {
   width: 100%;
-  min-width: var(--ten-columns);
+  max-width: var(--ten-columns);
 }
 
 .ten-columns-no-gutter {
   width: 100%;
-  min-width: var(--ten-columns-no-gutter);
+  max-width: var(--ten-columns-no-gutter);
 }
 
 .eleven-columns {
   width: 100%;
-  min-width: var(--eleven-columns);
+  max-width: var(--eleven-columns);
 }
 
 .eleven-columns-no-gutter {
   width: 100%;
-  min-width: var(--eleven-columns-no-gutter);
+  max-width: var(--eleven-columns-no-gutter);
 }
 
 .twelve-columns {
   width: 100%;
-  min-width: var(--twelve-columns);
+  max-width: var(--twelve-columns);
 }
 
 .twelve-columns-no-gutter {
   width: 100%;
-  min-width: var(--twelve-columns-no-gutter);
+  max-width: var(--twelve-columns-no-gutter);
 }
 
 .thirteen-columns {
   width: 100%;
-  min-width: var(--thirteen-columns);
+  max-width: var(--thirteen-columns);
 }
 
 .thirteen-columns-no-gutter {
   width: 100%;
-  min-width: var(--thirteen-columns-no-gutter);
+  max-width: var(--thirteen-columns-no-gutter);
 }
 
 .fourteen-columns {
   width: 100%;
-  min-width: var(--fourteen-columns);
+  max-width: var(--fourteen-columns);
 }
 
 .fourteen-columns-no-gutter {
   width: 100%;
-  min-width: var(--fourteen-columns-no-gutter);
+  max-width: var(--fourteen-columns-no-gutter);
 }
 
 .fifteen-columns {
   width: 100%;
-  min-width: var(--fifteen-columns);
+  max-width: var(--fifteen-columns);
 }
 
 .fifteen-columns-no-gutter {
   width: 100%;
-  min-width: var(--fifteen-columns-no-gutter);
+  max-width: var(--fifteen-columns-no-gutter);
 }
 
 .sixteen-columns {
   width: 100%;
-  min-width: var(--sixteen-columns);
+  max-width: var(--sixteen-columns);
 }
 
 .sixteen-columns-no-gutter {
   width: 100%;
-  min-width: var(--sixteen-columns-no-gutter);
+  max-width: var(--sixteen-columns-no-gutter);
 }
 
 .typeface-system-ui {
-  font-family: -apple-system, Helvetica, sans-serif;
+  font-family: -apple-system, Helvetica, Arial, sans-serif;
 }
 
 @font-face {
@@ -811,7 +938,7 @@ content {
 }
 
 .typeface-inter {
-  font-family: 'Inter', -apple-system, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -820,9 +947,35 @@ content {
 }
 
 :root {
+  --font-family: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
+  --base-font-family: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
+}
+
+:root {
   --color-link: #395FFF;
   --text-color: #555555;
+  --text-line-height: 1.5em;
   --measure-title-max-width: 77.5rem;
+  --measure-wide: 45rem;
+  --measure-regular: 32rem;
+  --measure-narrow: 25rem;
+  --content-padding: 0 1.25rem;
+  --font-size-heading: 6.5rem;
+  --font-size-subheading: 4rem;
+  --font-size-sectionheadinng: 2rem;
+  --font-size-excerpt: 1.25rem;
+  --font-size-paragraph: 1.25rem;
+  --font-weight-heading: 700;
+  --font-weight-subheading: 700;
+  --font-weight-sectionheadinng: 700;
+  --font-weight-excerpt: 600;
+  --font-weight-paragraph: 500;
+  --font-family-heading: var(--base-font-family);
+  --font-family-subheading: var(--base-font-family);
+  --font-family-sectionheadinng: var(--base-font-family);
+  --font-family-excerpt: var(--base-font-family);
+  --font-family-paragraph: var(--base-font-family);
+  /* Text conditions modifiers */
 }
 
 a, a:visited {
@@ -835,6 +988,38 @@ a:hover, a:visited:hover {
 
 * {
   font-family: "inter";
+  color: var(--text-color);
+  line-height: var(--text-line-height);
+}
+
+.heading {
+  font-family: var(--base-font-family);
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-heading);
+}
+
+.sub-heading {
+  font-family: var(--base-font-family);
+  font-size: var(--font-size-sectionheading);
+  font-weight: var(--font-weight-sectionheading);
+}
+
+.section-heading {
+  font-family: var(--base-font-family);
+  font-size: var(--font-size-subheading);
+  font-weight: var(--font-weight-subheading);
+}
+
+.excerpt {
+  font-family: var(--base-font-family);
+  font-size: var(--font-size-excerpt);
+  font-weight: var(--font-weight-excerpt);
+}
+
+.paragraph {
+  font-family: var(--base-font-family);
+  font-size: var(--font-size-paragraph);
+  font-weight: var(--font-weight-paragraph);
 }
 
 :root {
@@ -842,7 +1027,23 @@ a:hover, a:visited:hover {
   --breakpoint-mega: 1100px;
 }
 
+/* colors.scss */
+/* Establish default color variables. */
+:root {
+  --color-black: #111111;
+  --color-burple: #5E5CFF;
+  --color-text: var(--color-black);
+  --color-link: var(--color-burple);
+  --color-bg: #E7E9F0;
+  --color-accent: var(--color-burple);
+}
+
 /* Header */
+:root {
+  --header-generic-height:4.3125rem;
+  --header-line-heights: var(--header-generic-height);
+}
+
 header {
   display: flex;
   position: relative;
@@ -857,7 +1058,7 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  line-height: 44.42px;
+  line-height: var(--header-line-heights);
   font-weight: 600;
   color: var(--text-color);
 }
@@ -868,9 +1069,10 @@ nav a, nav a:visited, nav a:hover {
 }
 
 .gh-header-site-name a, .gh-header-site-name a:visited, .gh-header-site-name a:hover {
-  color: var(--text-color);
+  color: var(--color-text);
   text-decoration: none;
   cursor: pointer;
+  line-height: var(--header-line-heights);
   font-weight: 600;
   font-size: 44.42px;
 }
@@ -881,14 +1083,20 @@ nav a, nav a:visited, nav a:hover {
   }
 }
 
+.gh-head-menu {
+  color: var(--color-text);
+}
+
 .gh-head-menu ul.nav {
   list-style: none;
   padding: 0;
   margin: 0;
+  line-height: var(--header-line-heights);
 }
 
 .gh-head-menu ul.nav li {
   display: inline;
+  line-height: var(--header-line-heights);
 }
 
 .gh-head-menu ul.nav li a {
@@ -903,11 +1111,66 @@ nav a, nav a:visited, nav a:hover {
 }
 
 /*
+    {{#unless @member}}
+        <a href="#/portal/signup" data-portal="signup">Subscribe</a>
+    {{else}}
+        <a href="#/portal/account" data-portal="account">Account</a>
+    {{/unless}}
+
+    transforms into:
+
+    <a href="#/portal/signup" data-portal="signup" class="gh-portal-close">Subscribe</a>
+*/
+.gh-portal-close {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: var(--header-line-heights);
+}
+
+.site-header-content img {
+  border-radius: 1.5rem;
+}
+
+.site-header-content .site-header-text {
+  margin-top: var(--space-l);
+  margin-bottom: var(--space-l);
+  text-align: center;
+  color: var(--color-text);
+}
+
+.site-header-content .site-header-text h1 {
+  font-size: var(--font-size-subheading);
+  font-weight: 700;
+}
+
+.site-header-content .site-header-text p {
+  font-size: var(--text-header-size);
+  font-weight: 600;
+}
+
+/*
     post heading
 */
 heading {
   display: block;
   position: relative;
+}
+
+heading h1, heading p {
+  margin: 0 1.25rem;
+}
+
+heading > figure {
+  display: flex;
+  overflow: hidden;
+}
+
+heading > figure img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 heading h1 {
@@ -925,6 +1188,7 @@ heading p.excerpt {
   font-size: 1.25rem;
   line-height: 1.5em;
   font-weight: 600;
+  max-width: var(--measure-wide);
 }
 
 /**
@@ -935,22 +1199,165 @@ heading p.excerpt {
   --text-size: 1.171875rem;
 }
 
+content {
+  /* koenig stuff for Ghost */
+}
+
 content > h1, content > h2, content > h3, content > h4, content > h5 {
-  margin-top: var(--element-spacing);
+  margin-top: var(--text-line-height);
+  max-width: var(--measure-wide);
+  width: 100%;
 }
 
 content > p {
   font-family: var(--font-family);
   font-size: var(--text-size);
-  line-height: 1.333em;
-  margin-top: var(--element-spacing);
+  margin-top: var(--text-line-height);
+  max-width: var(--measure-wide);
+  font-weight: 400;
+  width: 100%;
 }
 
 content > figure img {
   width: 100%;
+  max-width: 100%;
   height: auto;
   margin-top: var(--space-m);
   margin-bottom: var(--space-m);
+}
+
+content hr {
+  border: 2px solid var(--text-color);
+  margin-top: var(--space-l);
+  margin-bottom: var(--space-l);
+}
+
+content .kg-width-wide {
+  max-width: 60rem;
+  width: 100%;
+}
+
+content .kg-width-full {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* post-card */
+:root {
+  --font-size-small-heading: var(--font-size-sectionheadinng);
+  --font-size-standard: var(--font-size-paragraph);
+  --font-family-heading: var(--base-font-family);
+  --font-family-excerpt: var(--base-font-family);
+}
+
+/*
+  The Post card
+  Used to display a clickable post card in a list. Conditionally has a post thumbnail attached to the side.
+*/
+.post-card {
+  display: block;
+  position: relative;
+  background: transparent;
+  max-width: 45.75rem;
+  padding: 0.5rem;
+  transform: scale(1);
+  transition: transform 0.13s ease;
+}
+
+.post-card .feature-image {
+  display: block;
+  position: relative;
+  float: left;
+  margin-right: 1.5rem;
+  width: 10rem;
+  height: 7.5rem;
+  background: black;
+}
+
+.post-card .feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+.post-card:hover {
+  transform: scale(1.05);
+}
+
+.post-card a {
+  text-decoration: none;
+}
+
+.post-card .title {
+  font-size: var(--font-size-small-heading);
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  color: black;
+}
+
+.post-card .excerpt {
+  font-size: var(--font-size-standard);
+  font-family: var(--font-family-excerpt);
+  font-weight: 500;
+  color: black;
+}
+
+/* Only small sites will have these rules applied. */
+@media screen and (max-width: 480px) {
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .post-card .feature-image {
+    width: 100%;
+    height: 100%;
+    max-height: 12rem;
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+}
+
+/* list */
+/*
+  The list
+
+  List components are meant to organize objects into a list, but not text lists, that are just <ul> or <ol>.
+
+  The main use of the list is for our indexes, Post indexes.
+*/
+.list {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 45.75rem;
+}
+
+/* index stuff */
+.index-header {
+  font-size: var(--font-size-excerpt);
+  line-height: 1.2em;
+  font-weight: 500;
+  margin: 0;
+  color: #111111;
+  width: 100%;
+}
+
+.list hr {
+  background: #111111;
+  border-radius: 2px;
+  height: 4px;
+  width: 100%;
+  border: none;
+}
+
+.list hr.no-top-margin {
+  margin-top: 0;
 }
 
 :root {
@@ -961,8 +1368,13 @@ content > figure img {
 body {
   min-height: 1vw;
   /* forces a repaint that actually makes this stuff work. */
+  font-size: 16px;
   font-size: var(--f-0);
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Inter', -apple-system, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
+  background-color: var(--color-background);
 }
+
+/* T-shirt sizes */
+/* included from littel sizes. */

@@ -1,6 +1,6 @@
 /// Add Inter as a typeface
 @mixin typeface-system-ui {
-  font-family: -apple-system, Helvetica, sans-serif;
+  font-family: -apple-system, Helvetica, Arial, sans-serif;
   // font-weight: 700; // always bold
 }
 .typeface-system-ui { @include typeface-system-ui; }
@@ -160,14 +160,17 @@
 
 
 @mixin typeface-inter {
-  font-family: 'Inter', -apple-system, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
 }
 .typeface-inter { @include typeface-inter; }
-
-
 
 // Activate font options
 * {
       font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
       font-kerning: normal;
   }
+
+:root {
+    --font-family: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
+    --base-font-family: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
+}

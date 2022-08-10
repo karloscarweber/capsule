@@ -27,29 +27,32 @@
     {{ghost_head}}
 
 </head>
-<body >
-    <div class="page">
-        <div class="section">
-            <header class="gh-head{{#match @custom.publication_cover_style "!=" "None"}} has-cover{{/match}}">
-                {{> "navbar"}}
-            </header>
-        </div>
-        {{!-- /.section --}}
+<body class="site-body">
 
-    <div class="section">
+<div class="page">
+    {{!-- special header section thing. --}}
+    <section class="{{#match @custom.header_behaviour "sticky"}}sticky{{/match}}">
+        <header class="gh-head{{#match @custom.publication_cover_style "!=" "None"}} has-cover{{/match}}">
+            {{> "navbar"}}
+        </header>
+    </section>
+    {{!-- /.section --}}
+
+    <section class="stack">
         {{!-- All other templates get inserted here, index.hbs, post.hbs, etc --}}
         {{{body}}}
-    </div>
+    </section>
 
     {{!-- The global footer at the very bottom of the screen --}}
-    <footer>
-            <section ><a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</section>
-            <nav>
-                {{navigation type="secondary"}}
-            </nav>
-            <div><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
-    </footer>
-
+    <section class="">
+        <pagefooter>
+                <section><a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</section>
+                <nav>
+                    {{navigation type="secondary"}}
+                </nav>
+                <div><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
+        </pagefooter>
+    </section>
 </div>
 {{!-- /.page --}}
 
@@ -68,6 +71,7 @@ $(document).ready(function () {
     });
     // FitVids - Makes video embeds responsive
     $(".gh-content").fitVids();
+    $(".page").focus();
 });
 </script>
 

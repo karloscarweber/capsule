@@ -21,22 +21,43 @@
 
 content {
     & > h1, & > h2, & > h3, & > h4, & > h5 {
-        margin-top: var(--element-spacing);
+        margin-top: var(--text-line-height);
+        max-width: var(--measure-wide);
+        width: 100%;
     }
 
     & > p {
         font-family: var(--font-family);
         font-size: var(--text-size);
-        line-height: 1.333em;
-        margin-top: var(--element-spacing);
+        margin-top: var(--text-line-height);
+        max-width: var(--measure-wide);
+        font-weight: 400;
+        width: 100%;
     }
 
     & > figure {
         img {
             width: 100%;
+            max-width: 100%;
             height: auto;
             margin-top: var(--space-m);
             margin-bottom: var(--space-m);
         }
+    }
+
+    hr {
+        border: 2px solid var(--text-color);
+        margin-top: var(--space-l);
+        margin-bottom: var(--space-l);
+    }
+
+    /* koenig stuff for Ghost */
+    .kg-width-wide {
+        max-width: 60rem;
+        width: 100%;
+    }
+    .kg-width-full {
+        max-width: 100%;
+        width: 100%;
     }
 }

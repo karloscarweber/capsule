@@ -2,10 +2,9 @@
     "name": "capsule",
     "description": "A bare bones base theme with everything in it to build other themes on top of.",
     "demo": "https://demo.capsulethemes.com",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "engines": {
-        "ghost": ">=4.0.0",
-        "ghost-api": "v4"
+        "ghost": ">=4.0.0"
     },
     "license": "MIT",
     "screenshots": {
@@ -50,14 +49,14 @@
         "beeper": "2.1.0",
         "cssnano": "4.1.10",
         "gscan": "4.11.1",
-        "gulp": "4.0.2",
+        "gulp": "^4.0.2",
         "gulp-cli": "^2.3.0",
         "gulp-concat": "2.6.1",
         "gulp-livereload": "4.0.2",
         "gulp-plumber": "^1.2.1",
         "gulp-postcss": "9.0.0",
         "gulp-rename": "^2.0.0",
-        "gulp-sass": "^4.0.1",
+        "gulp-sass": "^4.1.1",
         "gulp-sourcemaps": "^1.6.0",
         "gulp-uglify": "3.0.2",
         "gulp-watch": "4.3.8",
@@ -71,6 +70,7 @@
         "postcss-custom-properties": "5.0.1",
         "postcss-easy-import": "1.0.1",
         "pump": "3.0.0",
+        "sass": "^1.54.2",
         "underscore": "^1.12.0"
     },
     "config": {
@@ -97,21 +97,13 @@
         },
         "card_assets": true,
         "custom": {
-            "title_font": {
+            "header_behaviour": {
                 "type": "select",
                 "options": [
-                    "Modern sans-serif",
-                    "Elegant serif"
+                    "normal",
+                    "sticky"
                 ],
-                "default": "Modern sans-serif"
-            },
-            "body_font": {
-                "type": "select",
-                "options": [
-                    "Modern sans-serif",
-                    "Elegant serif"
-                ],
-                "default": "Elegant serif"
+                "default": "normal"
             },
             "publication_cover_style": {
                 "type": "select",
@@ -121,16 +113,6 @@
                     "Large"
                 ],
                 "default": "Medium",
-                "group": "homepage"
-            },
-            "feed_layout": {
-                "type": "select",
-                "options": [
-                    "Dynamic grid",
-                    "Simple grid",
-                    "List"
-                ],
-                "default": "Dynamic grid",
                 "group": "homepage"
             },
             "color_scheme": {

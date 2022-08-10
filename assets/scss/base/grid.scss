@@ -2,36 +2,125 @@
 :root {
   --color-background: #E7E9F0;
   --max-width: 60rem;
+  --max-content-width: 45rem; // 720px
+
+  --container-margins:1.25rem;
 }
-/// .page
+
+/*
+/// Composition of Abstract container object:
+╭────────────────────────────────╮
+│Browser                         │
+│  ╭──────────────────────────╮  │
+│  │Page                      │  │
+│  │╭────────────────────────╮│  │
+│  ││Section                 ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  │╰────────────────────────╯│  │
+│  │╭────────────────────────╮│  │
+│  ││Section                 ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  │╰────────────────────────╯│  │
+│  ╰──────────────────────────╯  │
+╰────────────────────────────────╯
+
+/// Composition of Structured container object:
+╭────────────────────────────────╮
+│Section                         │
+│  ╭──────────────────────────╮  │
+│  │Header                    │  │
+│  ╰──────────────────────────╯  │
+│  ╭──────────────────────────╮  │
+│  │main                      │  │
+│  │                          │  │
+│  │                          │  │
+│  │                          │  │
+│  │                          │  │
+│  │                          │  │
+│  │                          │  │
+│  ╰──────────────────────────╯  │
+│  ╭──────────────────────────╮  │
+│  │Footer                    │  │
+│  ╰──────────────────────────╯  │
+╰────────────────────────────────╯
+
+/// Composition of Post
+╭────────────────────────────────╮
+│Section                         │
+│  ╭──────────────────────────╮  │
+│  │Header                    │  │
+│  ╰──────────────────────────╯  │
+│  ╭──────────────────────────╮  │
+│  │main                      │  │
+│  │╭────────────────────────╮│  │
+│  ││content                 ││  │
+│  ││╭──────────────────────╮││  │
+│  │││component             │││  │
+│  │││                      │││  │
+│  │││                      │││  │
+│  │││                      │││  │
+│  ││╰──────────────────────╯││  │
+│  │╰────────────────────────╯│  │
+│  │╭────────────────────────╮│  │
+│  ││component               ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  ││                        ││  │
+│  │╰────────────────────────╯│  │
+│  ╰──────────────────────────╯  │
+│  ╭──────────────────────────╮  │
+│  │Footer                    │  │
+│  ╰──────────────────────────╯  │
+╰────────────────────────────────╯
+*/
 ///
 /// the .page class denotes a page element that contains the whole page in a site.
 /// These pages are meant to contain the entire screen and generally don't
-/// contain the menu/header of a site. Pages statically on top of one another
+/// contain the menu/header of a site. Pages stack on top of one another
 /// in the z-axis. presentation/dissapearing can be customized using transition
 /// variables to achieve smooth AJAX loading of successive pages in a site.
 .page { // pages are vertically organized;
     display:flex;
     flex-direction: column;
-    position: relative;
     box-sizing: border-box;
     width: auto;
     height:auto;
-    min-width: 100%;
-    min-height: 100%;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    overflow: scroll;
+
+    width: auto;
     background-color: var(--color-background);
 
-    // debug:
-    // background-color: green);
+    border-radius: 1.5rem;
+
+    // User .page.no-scroll to place a page as a direct child of a
+    // page in when you want to give it special padding and avoid un desirable
+    // over scroll performance.
+    &.no-scroll {
+      position:relative;
+      top: unset;
+      left: unset;
+      right: unset;
+      bottom: unset;
+      height: auto;
+      overflow: unset;
+    }
 }
 
 /// .section
 ///
-/// Sections represent horizontal divisions of a webpages. This is a container
+/// Sections represent vertical divisions of a webpages. This is a container
 /// element that can also be embedded in other elements with almost identical
 /// behaviour.
-
-.section { //
+.section, section { //
     display:block;
     // flex-direction: column;
     position: relative;
@@ -45,6 +134,32 @@
 
     // padding to give the design some space to breath.
     // padding: 0px 1.5rem;
+    &.sticky {
+      position: sticky;
+      z-index: 1000;
+      top: 0;
+    }
+
+    &.stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &.stack-horizontal {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+    }
+    &.stack.reverse { flex-direction: column-reverse; }
+    &.stack-horizontal.reverse { flex-direction: row-reverse; }
+
+
+}
+
+/* Direct Children are limited to a max width of 1280px or 80rem. */
+.section.stack > *, .section.stack.reverse > *,
+section.stack  > *, section.stack.reverse  > * {
+  max-width: 80rem;
 }
 
 /**
@@ -62,25 +177,34 @@
 ///
 /// Main is the main section. Inside of the page are elements, usually content
 /// and containers. Main holds the primary content, the header, the post body,
-/// and any footer associated with a post. It may be better to replace main when
+/// and any footer associated with a post or page. It may be better to replace main when
 /// performing AJAX replacements.
 main {
-    display: flex;
+    display: block;
     position: relative;
-    flex-direction: column;
     width: auto;
-
     box-sizing: border-box;
+
+    display:flex;
+    justify-content:center;
 }
 
 
 /// header
 ///
-/// Main is the main section. Inside of the page are elements, usually content
-/// and containers. Main holds the primary content, the header, the post body,
-/// and any footer associated with a post. It may be better to replace main when
-/// performing AJAX replacements.
+/// Header sits above main, has the header stuff for a post or page.
+/// It sits before content.
 header {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+/// footer
+///
+/// Footer sits below main, has the header stuff for a post or page.
+/// It sits before content.
+footer {
   display: block;
   position: relative;
   width: 100%;
@@ -91,7 +215,8 @@ header {
 /// content is placed within main and is placed after a header. It constitutes
 /// the content of a page. A blog post, a page. Etc... sometimes there is a
 /// sidebar that accompanies a page, this is placed as a sibling to content
-/// within main.
+/// within main. content is where structured content goes, things that a CMS
+/// spits out.
 content {
   display: block;
   position: relative;
@@ -189,11 +314,11 @@ $columns: (
     // do stuff
     .#{$name}-columns {
       width: 100%;
-      min-width: var(--#{$name}-columns);
+      max-width: var(--#{$name}-columns);
     }
     .#{$name}-columns-no-gutter {
       width: 100%;
-      min-width: var(--#{$name}-columns-no-gutter);
+      max-width: var(--#{$name}-columns-no-gutter);
     }
   }
 }
