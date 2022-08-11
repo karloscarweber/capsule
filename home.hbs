@@ -32,7 +32,40 @@
             z-index:1000;
             justify-content:center;
             overflow: hidden;padding: 1rem;
+            border-radius:2rem;
         }
+
+        :root {
+          --animate-duration: 1s;
+          --animate-delay: 1s;
+          --animate-repeat: 1;
+        }
+
+        .animate__animated {
+          -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+          -webkit-animation-duration: var(--animate-duration);
+          animation-duration: var(--animate-duration);
+          -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translate3d(0, 50%, 0);
+          }
+
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
+        .fadeInUp {
+          animation-name: fadeInUp;
+        }
+
         .hi-card {
             background:white;
             display:flex;
@@ -105,9 +138,9 @@
     </section>
     {{!-- /.section --}}
     -->
-    <section class="announcement">
+    <section class="announcement ">
 
-        <div class="hi-card">
+        <div class="hi-card animate__animated fadeInUp">
             <h3 style="padding:1rem;font-size:2rem;">👋<span style="display:inline-block;width:1rem;height:1rem;">&nbsp;</span>Hello Friends.</h3>
             <div style="text-align:justify;font-size:1rem;line-height:1.2em;font-weight:500;">
                 <p style="text-align:center;">I'm Karl, my friends call me KOW.</p>
@@ -117,11 +150,11 @@
                     <li>You can read my <a href="/blog/">blog</a>.</li>
                     <li>Read about the <a href="/blog/redesign/">active website redesign</a>.(started and stopped many times).</li>
                     <li>I'm working on modernizing <a href="https://github.com/camping/camping" target=_blank>Ruby Camping</a>, an old Ruby Web framework.</li>
-                    <li>You can <a href="mailto:me@kow.fm">hire me</a> to design and develop websites. (new portfolio coming soon)</li>
+                    <li>You can <a href="mailto:me@kow.fm?subject=freelance inquiry&body=We need your help designing and developing websites.">hire me</a> to design and develop websites. (new portfolio coming soon)</li>
                 </ul>
             </div>
             <br />
-            <a class="hi-button" href="mailto:me@kow.fm">Say Hi.</a>
+            <a class="hi-button" href="mailto:me@kow.fm?subject=Say Hi&body=Hi how are you.">Say Hi.</a>
         </div>
 
     </section>

@@ -99,9 +99,11 @@ into the {body} tag of the default.hbs template --}}
 </main>
 
 {{!-- A signup call to action is displayed here, unless viewed as a logged-in member --}}
+
+<!--
 {{#match @custom.email_signup_for_logged_out_visitors "!=" "None"}}
 {{#unless @member}}{{#if access}}
-    <section class="footer-cta {{#match @custom.email_signup_for_logged_out_visitors "Bottom of post"}}cta-alt{{/match}}">
+    <section style="display:none;" class="footer-cta {{#match @custom.email_signup_for_logged_out_visitors "Bottom of post"}}cta-alt{{/match}}">
         <div >
             {{#if @custom.email_signup_text}}<h2>{{@custom.email_signup_text}}</h2>{{/if}}
             <a href="#/portal" data-portal>
@@ -114,11 +116,12 @@ into the {body} tag of the default.hbs template --}}
     </section>
 {{/if}}{{/unless}}
 {{/match}}
-
+-->
 
 {{!-- Read more links, just above the footer --}}
+
 {{#if @custom.show_recent_posts}}
-<aside >
+<aside style="display:none;" >
     <div >
 
         {{!-- The {#get} helper below fetches some of the latest posts here
@@ -138,5 +141,6 @@ into the {body} tag of the default.hbs template --}}
     </div>
 </aside>
 {{/if}}
+
 
 {{/post}}

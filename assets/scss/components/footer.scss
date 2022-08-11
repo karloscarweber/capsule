@@ -1,0 +1,68 @@
+/* footer.scss */
+
+:root {
+  --narrow-aside-width: 33.75rem; // 540px
+  --narrow-page-width: 45.75rem; // 732px
+
+}
+
+pagefooter {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width:100%;
+  // max-width: var(--narrow-page-width) !important;
+  box-sizing: border-box;
+  padding: 0rem;
+  gap: 0.5rem;
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-l);
+  line-height: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: center;
+
+  a, a:visited {
+    text-decoration:none;
+    color: var(--color-accent);
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & > p {
+    width: 100%;
+    // max-width: var(--narrow-aside-width);
+  }
+
+  nav {
+    display: block;
+    // max-width: var(--narrow-aside-width);
+    ul {
+      list-style-type: none;
+      padding: 0;
+      li {
+        display: inline-block;
+        margin-right: 0.5rem;
+        a {
+          text-decoration:none;
+          color: var(--color-accent);
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+.page-template, .post-template {
+  pagefooter {
+    text-align: left;
+    max-width: var(--page-width) !important;
+    // & > p {
+    //
+    // }
+  }
+}

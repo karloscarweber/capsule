@@ -20,10 +20,19 @@
 /// and headings.
 
 content {
+
+    color: var(--color-text);
+    padding: 0;
+
     & > h1, & > h2, & > h3, & > h4, & > h5 {
         margin-top: var(--text-line-height);
         max-width: var(--measure-wide);
         width: 100%;
+
+        /* header and paragraph pairings */
+        & + p {
+            margin-top: 0.5em;
+        }
     }
 
     & > p {
@@ -31,9 +40,10 @@ content {
         font-size: var(--text-size);
         margin-top: var(--text-line-height);
         max-width: var(--measure-wide);
-        font-weight: 400;
+        font-weight: 500;
         width: 100%;
     }
+
 
     & > figure {
         img {
@@ -46,10 +56,36 @@ content {
     }
 
     hr {
-        border: 2px solid var(--text-color);
-        margin-top: var(--space-l);
-        margin-bottom: var(--space-l);
+        border: none;
+        background: var(--color-text);
+        border-radius:2px;
+        height:4px;
+        margin-top: var(--space-xl);
+        margin-bottom: var(--space-xl);
     }
+
+    a, a:visited {
+        color: var(--color-accent);
+        font-weight: 600;
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+    }
+
+    .kg-card {}
+    figure.kg-image-card {
+        img {
+            border-radius: 2rem;
+        }
+        img + figcaption {
+            padding:0 1.5rem;
+            font-size: 1rem;
+            color: var(--color-text);
+            opacity: 0.9;
+            line-height: 1rem;
+            text-align:right;
+        }
+    }
+    .kg-card-hascaption {}
 
     /* koenig stuff for Ghost */
     .kg-width-wide {
@@ -60,4 +96,40 @@ content {
         max-width: 100%;
         width: 100%;
     }
+
+    pre {
+        background: var(--color-text);
+        padding: 1rem;
+        border-radius: 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    code[class*=language-], pre[class*=language-] {
+        border:none;
+        font-size: var(--text-size);
+    }
+
+    // Custom syntax highlighting.
+    code[class*=language-] .token {
+        .symbol {}
+        .keyword {}
+        .class-name {}
+        .comment {}
+        .string-literal {}
+        .operator {}
+        .punctuation {}
+        .method-definition {
+            .keyword {}
+            .punctuation {}
+            .function {}
+        }
+        .function {}
+    }
+}
+
+
+heading h1, heading p {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
 }

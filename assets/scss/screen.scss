@@ -17,6 +17,7 @@
 @import 'components/content';
 @import 'components/post-card';
 @import 'components/list';
+@import 'components/footer';
 
 :root {
     // --f-0-min:  20;    //  20px
@@ -24,6 +25,9 @@
 
     --fc-m-min: 10;
     --fc-m-max: 20;
+    --narrow-page-width: 45.75rem; // 732px
+    --narrow-aside-width: 33.75rem; // 540px
+    --page-width: 80rem; // 540px
 }
 
 body {
@@ -35,6 +39,15 @@ body {
   @include typeface-inter;
   background-color: var(--color-background);
 }
+
+
+* {
+  font-family: "inter";
+  color: var(--color-text);
+  line-height: var(--text-line-height);
+}
+
+
 
 
 /* T-shirt sizes */

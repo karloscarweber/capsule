@@ -5,6 +5,8 @@
   --font-size-standard: var(--font-size-paragraph);
   --font-family-heading: var(--base-font-family);
   --font-family-excerpt: var(--base-font-family);
+
+  --narrow-page-width: 45.75rem;
 }
 
 /*
@@ -16,7 +18,7 @@
   display: block;
   position: relative;
   background:transparent;
-  max-width: 45.75rem; // 732px
+  max-width: var(--narrow-page-width); // 732px
   padding:0.5rem; // 16px
 
   .feature-image {

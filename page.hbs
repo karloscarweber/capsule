@@ -8,9 +8,12 @@ into the {body} tag of the default.hbs template --}}
 {{!-- Everything inside the #post block pulls data from the page --}}
 
 <main>
-    <article>
+    <article  class="article {{post_class}} {{#match @custom.post_image_width "Full"}}image-full{{else match @custom.post_image_width "=" "Small"}}image-small{{/match}}">
         <section>
-            <header>
+            <heading>
+
+
+
                 {{#if feature_image}}
                 <figure >
                     {{!-- This is a responsive image, it loads different sizes depending on device
@@ -30,9 +33,13 @@ into the {body} tag of the default.hbs template --}}
                 </figure>
                 {{/if}}
 
-                <h1 >{{title}}</h1>
+                 <h1>{{title}}</h1>
 
-            </header>
+                 {{#if custom_excerpt}}
+                 <p class="excerpt">{{custom_excerpt}}</p>
+                 {{/if}}
+
+            </heading>
         </section>
         <section>
             <content>

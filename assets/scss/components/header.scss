@@ -16,18 +16,28 @@ nav {
     display: flex;
     position:relative;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    align-content: center;
     width: 100%;
     line-height: var(--header-line-heights);
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--color-text);
     a, a:visited, a:hover {
-        color: var(--text-color);
+        color: var(--color-text);
         text-decoration: none;
     }
 }
 
+header {
+    padding: 0 0.5rem;
+}
+
 .gh-header-site-name {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+
     a, a:visited, a:hover {
         color: var(--color-text);
         text-decoration: none;
@@ -84,6 +94,7 @@ nav {
     padding: 0;
     margin: 0;
     line-height: var(--header-line-heights);
+    display:none;
 }
 
 // Custom Publication Cover Style:
@@ -96,15 +107,16 @@ nav {
         margin-top:var(--space-l);
         margin-bottom:var(--space-l);
         text-align: center;
-        color: var(--color-text);
 
         h1 {
             font-size: var(--font-size-subheading);
             font-weight: 700;
+            color: var(--color-text);
         }
         p {
             font-size: var(--text-header-size);
             font-weight: 600;
+            color: var(--color-text);
         }
     }
 }

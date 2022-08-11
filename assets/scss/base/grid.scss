@@ -113,6 +113,8 @@
       height: auto;
       overflow: unset;
     }
+
+    box-shadow: var(--color-background) 0px 0px 0px 100px;
 }
 
 /// .section
@@ -139,7 +141,6 @@
       z-index: 1000;
       top: 0;
     }
-
     &.stack {
       display: flex;
       flex-direction: column;
