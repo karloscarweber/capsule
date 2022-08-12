@@ -34,21 +34,13 @@ body {
   min-height: 1vw; /* forces a repaint that actually makes this stuff work. */
   font-size:16px;
   font-size: var(--f-0);
-  line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
   @include typeface-inter;
   background-color: var(--color-background);
-}
-
-
-* {
   font-family: "inter";
   color: var(--color-text);
-  line-height: var(--text-line-height);
+  line-height: var(--text-line-height, 1.5);
 }
-
-
-
 
 /* T-shirt sizes */
 /* included from littel sizes. */

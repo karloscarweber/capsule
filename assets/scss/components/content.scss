@@ -25,7 +25,7 @@ content {
     padding: 0;
 
     & > h1, & > h2, & > h3, & > h4, & > h5 {
-        margin-top: var(--text-line-height);
+        margin-top: 1em;
         max-width: var(--measure-wide);
         width: 100%;
 
@@ -38,7 +38,7 @@ content {
     & > p {
         font-family: var(--font-family);
         font-size: var(--text-size);
-        margin-top: var(--text-line-height);
+        margin-top: 1em;
         max-width: var(--measure-wide);
         font-weight: 500;
         width: 100%;
@@ -97,33 +97,66 @@ content {
         width: 100%;
     }
 
-    pre {
-        background: var(--color-text);
+    pre, pre[class*=language-] {
+        // background: var(--color-text);
         padding: 1rem;
-        border-radius: 1.5rem;
-        font-size: 1.25rem;
+        padding-left: 2rem;
+        background: #192535;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    pre::-webkit-scrollbar, pre[class*=language-]::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    pre, pre[class*=language-] {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
     }
 
     code[class*=language-], pre[class*=language-] {
-        border:none;
+        border: none;
         font-size: var(--text-size);
+        font-family: 'SF Mono', Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace !important;
+        font-weight: 500;
+        border-radius: 1.5rem;
+        text-shadow: none;
+    }
+
+    :not(pre)>code[class*=language-], pre[class*=language-] {
+        background: #192535;
     }
 
     // Custom syntax highlighting.
     code[class*=language-] .token {
-        .symbol {}
-        .keyword {}
-        .class-name {}
-        .comment {}
-        .string-literal {}
-        .operator {}
-        .punctuation {}
-        .method-definition {
-            .keyword {}
-            .punctuation {}
-            .function {}
+        &.symbol {color:#D172D1}
+        &.keyword {color:#EC5B54}
+        &.variable {color:white}
+        &.class-name {color:#70B0EC}
+        &.comment {color:#7B8185}
+        &.string-literal {color:#f8cb54}
+        &.string {color:#f8cb54}
+        &.operator {color:#B2B8BE}
+        &.punctuation {color:#B2B8BE}
+        &.double-colon.punctuation {color: white}
+        &.class-name {color:#A381F7} /* overridden */
+        &.method-definition {
+            &.keyword {}
+            &.punctuation {}
+            &.function {}
         }
-        .function {}
+        &.interpolation {
+            .token.punctuation {color:#FAE5A2;}
+            .token.delimiter {color:#FAE5A2;}
+            .token.delimiter.punctuation {color:#FAE5A2;}
+        }
+        &.content {color:white; }
+        &.function {color:#70B0EC;}
+        /* For parens that follow a method definition */
+        // &.method-definition + .punctuation, &.method-definition + .punctuation + &.punctuation { color: #3B82F7; }
     }
 }
 

@@ -31,7 +31,8 @@
             top:0;
             z-index:1000;
             justify-content:center;
-            overflow: hidden;padding: 1rem;
+            overflow: hidden;
+            padding: 1rem;
             border-radius:2rem;
         }
 
@@ -114,6 +115,47 @@
             box-shadow: 0 7px 100px -25px rgba(94,92,255,0.46);
             transform: scale(1.05);
         }
+        .text-box {
+            text-align:justify;
+            font-size:1.1rem;
+            line-height:1.2em;
+            font-weight:500;
+            font-family: Helvetica;
+            line-height: 1.3;
+        }
+        .greeting {
+            padding:1rem;
+            font-size:2rem;
+        }
+
+        @media screen and (max-width: 480px) {
+            .page {
+                top: 0 !important;
+                left: 0 !important;
+                bottom: 0 !important;
+                right: 0 !important;
+                border-radius: 0 !important;
+            }
+            section.announcement {
+                border-radius: 0;
+            }
+            .hi-card {
+                display: flex;
+                left: 1rem;
+                top: 1rem;
+                bottom: 1rem;
+                right: 1rem;
+                position: absolute;
+                max-width: calc(100% - 2rem);
+                width: 100%;
+                height: 100%;
+                max-height: calc(100% - 2rem);
+            }
+            .greeting {
+                padding:0rem;
+                margin-left: 0.5rem;
+            }
+        }
 
     </style>
 
@@ -141,8 +183,8 @@
     <section class="announcement ">
 
         <div class="hi-card animate__animated fadeInUp">
-            <h3 style="padding:1rem;font-size:2rem;">👋<span style="display:inline-block;width:1rem;height:1rem;">&nbsp;</span>Hello Friends.</h3>
-            <div style="text-align:justify;font-size:1rem;line-height:1.2em;font-weight:500;">
+            <h3 class="greeting">👋<span style="display:inline-block;width:1rem;height:1rem;">&nbsp;</span>Hello Friends.</h3>
+            <div class="text-box">
                 <p style="text-align:center;">I'm Karl, my friends call me KOW.</p>
                 <br>
                 <p>I'm a web designer and developer living in Salt Lake City. My website is under construction while I work on something cool and new. Some FAX:</p>
@@ -153,7 +195,7 @@
                     <li>You can <a href="mailto:me@kow.fm?subject=freelance inquiry&body=We need your help designing and developing websites.">hire me</a> to design and develop websites. (new portfolio coming soon)</li>
                 </ul>
             </div>
-            <br />
+
             <a class="hi-button" href="mailto:me@kow.fm?subject=Say Hi&body=Hi how are you.">Say Hi.</a>
         </div>
 
