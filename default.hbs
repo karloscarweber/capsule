@@ -30,7 +30,10 @@
 </head>
 <body class="site-body {{body_class}}">
 
-<div class="page">
+<div class="page open-menu">
+
+    {{!-- special mobile Header --}}
+
     {{!-- special header section thing. --}}
     <section class="{{#match @custom.header_behaviour "sticky"}}sticky{{/match}}">
         <header class="gh-head{{#match @custom.publication_cover_style "!=" "None"}} has-cover{{/match}}">

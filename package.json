@@ -2,7 +2,7 @@
     "name": "capsule",
     "description": "A bare bones base theme with everything in it to build other themes on top of.",
     "demo": "https://demo.capsulethemes.com",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "engines": {
         "ghost": ">=5.0.0"
     },

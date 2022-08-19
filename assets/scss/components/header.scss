@@ -3,6 +3,7 @@
     --header-generic-height:4.3125rem; // Used to set the height of the header and line-heights for the list elements
     --header-line-heights: var(--header-generic-height);
 }
+
 header {
     display: flex;
     position:relative;
@@ -10,7 +11,6 @@ header {
     width: 100%;
     padding: var(--space-m);
 }
-
 
 nav {
     display: flex;
@@ -29,7 +29,8 @@ nav {
 }
 
 header {
-    padding: 0 0.5rem;
+    padding: 0;
+    // padding: 0 0.5rem;
 }
 
 .gh-header-site-name {
@@ -61,6 +62,10 @@ header {
         padding: 0;
         margin: 0;
         line-height: var(--header-line-heights);
+        display: flex;
+        position: relative;
+        gap: 1rem;
+
         li {
             display: inline;
             line-height: var(--header-line-heights);
@@ -138,3 +143,82 @@ header {
     }
 }
 
+:root {
+  --animate-duration: 0.5s;
+  --animate-delay: 0.5s;
+  --animate-repeat: 1;
+}
+
+.animate__animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-duration: var(--animate-duration);
+  animation-duration: var(--animate-duration);
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.fadeOutDown {
+  animation-name: fadeOutDown;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 50%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+// hiding menu
+.mobile-menu-container {
+    display: none;
+}
+
+/* Only small sites will have these rules applied. */
+@media screen and (max-width: 480px) {
+    .mobile-menu-container {
+        display: block;
+        position: fixed;
+        left:0.5rem;
+        right:0.5rem;
+        top: 4rem;
+        background: blue;
+        border-radius: 1rem;
+        width: auto;
+        max-width: 100%;
+        z-index: 999;
+        height: calc(100vh - 4rem);
+        animation-name: fadeOutDown;
+        // &.visible {
+        //     animation-name: fadeInUp;
+        // }
+    }
+
+    .page.open-menu {
+        overflow:hidden;
+        .mobile-menu-container {
+            animation-name: fadeInUp;
+        }
+    }
+}

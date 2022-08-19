@@ -474,6 +474,7 @@ select {
   right: 0.5rem;
   bottom: 0.5rem;
   overflow: scroll;
+  z-index: 1000;
   width: auto;
   background-color: var(--color-background);
   border-radius: 1.5rem;
@@ -996,6 +997,119 @@ content {
   src: local("SF Mono Bold Italic"), url("/assets/fonts/sfmono/SFMonoBoldItalic.woff") format("woff");
 }
 
+/* TypeFace */
+/*
+  400 regular
+  500 medium
+  600 demi-bold
+  700 bold
+  900 heavy
+*/
+@font-face {
+  font-family: "GreycliffCF";
+  src: url("/assets/fonts/greycliff/GreycliffCF-Regular.eot");
+  /* IE9 Compat Mode */
+  src: url("/assets/fonts/greycliff/GreycliffCF-Regular.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/greycliff/GreycliffCF-Regular.woff2") format("woff2"), url("/assets/fonts/greycliff/GreycliffCF-Regular.woff") format("woff"), url("/assets/fonts/greycliff/GreycliffCF-Regular.ttf") format("truetype");
+  /* Safari, Android, iOS */
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GreycliffCF";
+  src: url("/assets/fonts/greycliff/GreycliffCF-RegularOblique.eot");
+  /* IE9 Compat Mode */
+  src: url("/assets/fonts/greycliff/GreycliffCF-RegularOblique.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/greycliff/GreycliffCF-RegularOblique.woff2") format("woff2"), url("/assets/fonts/greycliff/GreycliffCF-RegularOblique.woff") format("woff"), url("/assets/fonts/greycliff/GreycliffCF-RegularOblique.ttf") format("truetype");
+  /* Safari, Android, iOS */
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GreycliffCF";
+  src: url("/assets/fonts/greycliff/GreycliffCF-Medium.eot");
+  /* IE9 Compat Mode */
+  src: url("/assets/fonts/greycliff/GreycliffCF-Medium.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/greycliff/GreycliffCF-Medium.woff2") format("woff2"), url("/assets/fonts/greycliff/GreycliffCF-Medium.woff") format("woff"), url("/assets/fonts/greycliff/GreycliffCF-Medium.ttf") format("truetype");
+  /* Safari, Android, iOS */
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GreycliffCF";
+  src: url("/assets/fonts/greycliff/GreycliffCF-MediumOblique.eot");
+  /* IE9 Compat Mode */
+  src: url("/assets/fonts/greycliff/GreycliffCF-MediumOblique.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/greycliff/GreycliffCF-MediumOblique.woff2") format("woff2"), url("/assets/fonts/greycliff/GreycliffCF-MediumOblique.woff") format("woff"), url("/assets/fonts/greycliff/GreycliffCF-MediumOblique.ttf") format("truetype");
+  /* Safari, Android, iOS */
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GreycliffCF";
+  src: url("/assets/fonts/greycliff/GreycliffCF-DemiBold.eot");
+  /* IE9 Compat Mode */
+  src: url("/assets/fonts/greycliff/GreycliffCF-DemiBold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/greycliff/GreycliffCF-DemiBold.woff2") format("woff2"), url("/assets/fonts/greycliff/GreycliffCF-DemiBold.woff") format("woff"), url("/assets/fonts/greycliff/GreycliffCF-DemiBold.ttf") format("truetype");
+  /* Safari, Android, iOS */
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GreycliffCF";
+  src: url("/assets/fonts/greycliff/GreycliffCF-DemiBoldOblique.eot");
+  /* IE9 Compat Mode */
+  src: url("/assets/fonts/greycliff/GreycliffCF-DemiBoldOblique.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/greycliff/GreycliffCF-DemiBoldOblique.woff2") format("woff2"), url("/assets/fonts/greycliff/GreycliffCF-DemiBoldOblique.woff") format("woff"), url("/assets/fonts/greycliff/GreycliffCF-DemiBoldOblique.ttf") format("truetype");
+  /* Safari, Android, iOS */
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GreycliffCF";
+  src: url("/assets/fonts/greycliff/GreycliffCF-Bold.eot");
+  /* IE9 Compat Mode */
+  src: url("/assets/fonts/greycliff/GreycliffCF-Bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/greycliff/GreycliffCF-Bold.woff2") format("woff2"), url("/assets/fonts/greycliff/GreycliffCF-Bold.woff") format("woff"), url("/assets/fonts/greycliff/GreycliffCF-Bold.ttf") format("truetype");
+  /* Safari, Android, iOS */
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GreycliffCF";
+  src: url("/assets/fonts/greycliff/GreycliffCF-BoldOblique.eot");
+  /* IE9 Compat Mode */
+  src: url("/assets/fonts/greycliff/GreycliffCF-BoldOblique.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/greycliff/GreycliffCF-BoldOblique.woff2") format("woff2"), url("/assets/fonts/greycliff/GreycliffCF-BoldOblique.woff") format("woff"), url("/assets/fonts/greycliff/GreycliffCF-BoldOblique.ttf") format("truetype");
+  /* Safari, Android, iOS */
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GreycliffCF";
+  src: url("/assets/fonts/greycliff/GreycliffCF-Heavy.eot");
+  /* IE9 Compat Mode */
+  src: url("/assets/fonts/greycliff/GreycliffCF-Heavy.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/greycliff/GreycliffCF-Heavy.woff2") format("woff2"), url("/assets/fonts/greycliff/GreycliffCF-Heavy.woff") format("woff"), url("/assets/fonts/greycliff/GreycliffCF-Heavy.ttf") format("truetype");
+  /* Safari, Android, iOS */
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GreycliffCF";
+  src: url("/assets/fonts/greycliff/GreycliffCF-HeavyOblique.eot");
+  /* IE9 Compat Mode */
+  src: url("/assets/fonts/greycliff/GreycliffCF-HeavyOblique.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/greycliff/GreycliffCF-HeavyOblique.woff2") format("woff2"), url("/assets/fonts/greycliff/GreycliffCF-HeavyOblique.woff") format("woff"), url("/assets/fonts/greycliff/GreycliffCF-HeavyOblique.ttf") format("truetype");
+  /* Safari, Android, iOS */
+  font-weight: 900;
+  font-style: italic;
+}
+
+.typeface-greycliffcf {
+  font-family: "GreycliffCF";
+  font-weight: 400;
+}
+
 :root {
   --color-link: #395FFF;
   --text-color: #555555;
@@ -1109,7 +1223,7 @@ nav a, nav a:visited, nav a:hover {
 }
 
 header {
-  padding: 0 0.5rem;
+  padding: 0;
 }
 
 .gh-header-site-name {
@@ -1143,6 +1257,9 @@ header {
   padding: 0;
   margin: 0;
   line-height: var(--header-line-heights);
+  display: flex;
+  position: relative;
+  gap: 1rem;
 }
 
 .gh-head-menu ul.nav li {
@@ -1220,6 +1337,79 @@ header {
   color: var(--color-text);
 }
 
+:root {
+  --animate-duration: 0.5s;
+  --animate-delay: 0.5s;
+  --animate-repeat: 1;
+}
+
+.animate__animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-duration: var(--animate-duration);
+  animation-duration: var(--animate-duration);
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.fadeOutDown {
+  animation-name: fadeOutDown;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 50%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+.mobile-menu-container {
+  display: none;
+}
+
+/* Only small sites will have these rules applied. */
+@media screen and (max-width: 480px) {
+  .mobile-menu-container {
+    display: block;
+    position: fixed;
+    left: 0.5rem;
+    right: 0.5rem;
+    top: 4rem;
+    background: blue;
+    border-radius: 1rem;
+    width: auto;
+    max-width: 100%;
+    z-index: 999;
+    height: calc(100vh - 4rem);
+    animation-name: fadeOutDown;
+  }
+  .page.open-menu {
+    overflow: hidden;
+  }
+  .page.open-menu .mobile-menu-container {
+    animation-name: fadeInUp;
+  }
+}
+
 /*
     post heading
 */
@@ -1269,6 +1459,16 @@ heading p.excerpt {
   font-weight: 600;
   max-width: var(--measure-wide);
   color: var(--color-text);
+}
+
+@media screen and (max-width: 640px) {
+  heading h1 {
+    font-size: 3.25rem;
+    line-height: 3.25rem;
+  }
+  heading p.excerpt {
+    font-size: 1rem;
+  }
 }
 
 /**
@@ -1480,6 +1680,7 @@ heading h1, heading p {
 .post-card {
   display: block;
   position: relative;
+  width: 100%;
   background: transparent;
   max-width: var(--narrow-page-width);
   padding: 0.5rem;
