@@ -387,7 +387,7 @@ select {
 /* Grid styles */
 :root {
   --color-background: #E7E9F0;
-  --max-width: 60rem;
+  --max-width: 80rem;
   --max-content-width: 45rem;
   --container-margins:1.25rem;
 }
@@ -516,6 +516,7 @@ select {
   display: flex;
   flex-direction: row;
   align-items: stretch;
+  justify-content: center;
 }
 
 .section.stack.reverse, section.stack.reverse {
@@ -572,6 +573,7 @@ content {
   max-width: var(--max-width);
   box-sizing: border-box;
   padding: 0rem 1.25rem;
+  overflow-y: hidden;
 }
 
 .container .centered {
@@ -1226,6 +1228,10 @@ header {
   padding: 0;
 }
 
+header.gh-head {
+  z-index: 1000;
+}
+
 .gh-header-site-name {
   display: block;
   position: absolute;
@@ -1386,28 +1392,114 @@ header {
   display: none;
 }
 
+.gh-header-mobile-toggle-button {
+  display: none;
+}
+
 /* Only small sites will have these rules applied. */
 @media screen and (max-width: 480px) {
+  .gh-head-menu {
+    opacity: 0;
+    pointer-events: none;
+    max-height: 5rem;
+    overflow: hidden;
+  }
   .mobile-menu-container {
     display: block;
     position: fixed;
     left: 0.5rem;
     right: 0.5rem;
     top: 4rem;
-    background: blue;
+    background: linear-gradient(45deg, rgba(247, 181, 0, 0.42), rgba(182, 32, 224, 0.42), rgba(50, 197, 255, 0.42)), rgba(0, 0, 0, 0.8);
     border-radius: 1rem;
     width: auto;
     max-width: 100%;
     z-index: 999;
     height: calc(100vh - 4rem);
     animation-name: fadeOutDown;
+    margin-top: 200vh;
+    overflow-y: scroll;
+  }
+  .mobile-menu-container.ready {
+    margin-top: 0;
+  }
+  .mobile-menu-container ul {
+    list-style-type: none;
+  }
+  .mobile-menu-container ul li a {
+    color: white;
+    font-size: 1.75rem;
   }
   .page.open-menu {
     overflow: hidden;
+    user-select: none;
   }
   .page.open-menu .mobile-menu-container {
     animation-name: fadeInUp;
   }
+  .gh-header-mobile-toggle-button {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+  }
+}
+
+.menu-button {
+  width: 36px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+  transition: transform 0.17s cubic-bezier(0.67, 1.87, 0.59, 0.7);
+  transform-origin: 0% 100%;
+}
+
+.menu-button svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: transform 0.17s cubic-bezier(0.67, 1.87, 0.59, 0.7);
+}
+
+.menu-button svg #circle {
+  fill: transparent;
+  transition: transform 0.17s cubic-bezier(0.67, 1.87, 0.59, 0.7);
+}
+
+.menu-button svg #top-rect {
+  transform-origin: center;
+  transform: translateY(0px) rotateZ(0deg);
+  transition: transform 0.17s cubic-bezier(0.67, 1.87, 0.59, 0.7);
+}
+
+.menu-button svg #bottom-rect {
+  transform-origin: center;
+  transform: translateY(0px) rotateZ(0deg);
+  transition: transform 0.17s cubic-bezier(0.67, 1.87, 0.59, 0.7);
+}
+
+.page.open-menu .menu-button svg #circle {
+  fill: black;
+}
+
+.page.open-menu .menu-button svg #top-rect {
+  fill: white;
+  transform: translateY(5.5px) rotate(30deg) translateX(-2px);
+}
+
+.page.open-menu .menu-button svg #bottom-rect {
+  fill: white;
+  transform: translateY(-5.5px) rotate(-30deg) translateX(-3px);
 }
 
 /*

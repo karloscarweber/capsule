@@ -1,7 +1,7 @@
 /* Grid styles */
 :root {
   --color-background: #E7E9F0;
-  --max-width: 60rem;
+  --max-width: 80rem;
   --max-content-width: 45rem; // 720px
 
   --container-margins:1.25rem;
@@ -150,6 +150,7 @@
       display: flex;
       flex-direction: row;
       align-items: stretch;
+      justify-content: center;
     }
     &.stack.reverse { flex-direction: column-reverse; }
     &.stack-horizontal.reverse { flex-direction: row-reverse; }
@@ -237,6 +238,7 @@ content {
   max-width: var(--max-width);
   box-sizing: border-box;
   padding: 0rem 1.25rem;
+  overflow-y: hidden;
 
   /// positioning
   .centered {

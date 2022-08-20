@@ -32,6 +32,9 @@ header {
     padding: 0;
     // padding: 0 0.5rem;
 }
+header.gh-head {
+    z-index: 1000;
+}
 
 .gh-header-site-name {
     display: block;
@@ -195,30 +198,112 @@ header {
     display: none;
 }
 
+.gh-header-mobile-toggle-button {
+    display:none;
+}
+
 /* Only small sites will have these rules applied. */
 @media screen and (max-width: 480px) {
-    .mobile-menu-container {
-        display: block;
-        position: fixed;
-        left:0.5rem;
-        right:0.5rem;
-        top: 4rem;
-        background: blue;
-        border-radius: 1rem;
-        width: auto;
-        max-width: 100%;
-        z-index: 999;
-        height: calc(100vh - 4rem);
-        animation-name: fadeOutDown;
-        // &.visible {
-        //     animation-name: fadeInUp;
-        // }
+  .gh-head-menu { opacity: 0; pointer-events: none; max-height: 5rem; overflow:hidden; }
+  .mobile-menu-container {
+    display: block;
+    position: fixed;
+    left:0.5rem;
+    right:0.5rem;
+    top: 4rem;
+    background: linear-gradient(45deg, rgba(247, 181, 0, 0.42), rgba(182, 32, 224, 0.42), rgba(50, 197, 255, 0.42)), rgba(0, 0, 0, 0.8);
+    border-radius: 1rem;
+    width: auto;
+    max-width: 100%;
+    z-index: 999;
+    height: calc(100vh - 4rem);
+    animation-name: fadeOutDown;
+    margin-top: 200vh;
+    overflow-y: scroll;
+    &.ready {
+      margin-top: 0;
     }
 
-    .page.open-menu {
-        overflow:hidden;
-        .mobile-menu-container {
-            animation-name: fadeInUp;
-        }
+    ul {
+      list-style-type: none;
+      li a {
+        color: white;
+        font-size: 1.75rem;
+      }
     }
+
+  }
+
+  .page.open-menu {
+    overflow:hidden;
+    user-select: none;
+    .mobile-menu-container {
+        animation-name: fadeInUp;
+    }
+  }
+
+  .gh-header-mobile-toggle-button {
+    display:block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+  }
+}
+.menu-button {
+  width: 36px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+  svg {
+    width: 36px;
+    height: 36px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: transform 0.17s cubic-bezier(.67, 1.87, .59, .7);
+
+    #circle {
+      fill: transparent;
+      transition: transform 0.17s cubic-bezier(.67, 1.87, .59, .7);
+    }
+    #top-rect {
+      transform-origin: center;
+      transform: translateY(0px) rotateZ(0deg);
+      transition: transform 0.17s cubic-bezier(.67, 1.87, .59, .7);
+    }
+    #bottom-rect {
+      transform-origin: center;
+      transform: translateY(0px) rotateZ(0deg);
+      transition: transform 0.17s cubic-bezier(.67, 1.87, .59, .7);
+    }
+  }
+  transition: transform 0.17s cubic-bezier(.67, 1.87, .59, .7);
+  transform-origin: 0% 100%;
+}
+
+.page.open-menu {
+  .menu-button {
+    svg {
+      #circle {
+        fill: black;
+      }
+      #top-rect {
+        fill: white;
+        transform: translateY(5.5px) rotate(30deg) translateX(-2px);
+      }
+      #bottom-rect {
+        fill: white;
+        transform: translateY(-5.5px) rotate(-30deg) translateX(-3px);
+      }
+    }
+  }
+
 }
